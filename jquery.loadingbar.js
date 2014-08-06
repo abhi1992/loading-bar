@@ -17,7 +17,7 @@
 		replaceURL: false,
 		target: "#loadingbar-frame",
 		direction: "right",
-		
+		url: '#',
 		/* Deafult Ajax Parameters  */
 		async: true,
 		complete: function(xhr, text) {},
@@ -38,7 +38,7 @@
   $.fn.loadingbar = function(options){
     var settings = $.extend({}, defaults, options),
         el = $(this),
-        href = el.attr("href"),
+        href = (el.attr("href")) ? el.attr("href") : (el.data("url"))?  el.data("url") : settings.url,
         target = (el.data("target")) ? el.data("target") : settings.target,
         type = (el.data("type")) ? el.data("type") : settings.type,
         datatype = (el.data("datatype")) ? el.data("datatype") : settings.dataType
